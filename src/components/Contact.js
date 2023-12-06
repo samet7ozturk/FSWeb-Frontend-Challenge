@@ -1,43 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { instanceAxios } from "../api/api";
-import { engData } from "../data";
+import React from "react";
 import svg1 from "../images/twitter 1.svg";
 import svg2 from "../images/codepen 1.svg";
 import svg3 from "../images/at-sign 1.svg";
 import svg4 from "../images/instagram 1.svg";
+import { useData } from "../contexts/DataContext";
 
 const Contact = () => {
-  const [data, setData] = useState({});
-
-  useEffect(() => {
-    instanceAxios
-      .post(`/users`, engData)
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
+  const { postData } = useData();
+  const { contact } = postData;
 
   return (
     <div className="mt-20">
       <div>
         <div>
           <h2 className="text-[48px] text-[#4731D3] font-bold text-center mb-12">
-            {data.contact?.title}
+            {contact?.title}
           </h2>
         </div>
 
         <div>
           <p className="text-[24px] text-black font-normal text-center mb-12">
-            {data.contact?.text}
+            {contact?.text}
           </p>
         </div>
 
         <div>
           <p className="text-[20px] text-[#4731D3] font-medium text-center mb-12">
-            <u>{data.contact?.email}</u>
+            <u>{contact?.email}</u>
           </p>
         </div>
 

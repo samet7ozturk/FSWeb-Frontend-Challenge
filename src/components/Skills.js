@@ -1,30 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { instanceAxios } from "../api/api";
-import { engData } from "../data";
+import React from "react";
+import { useData } from "../contexts/DataContext";
 
 const Skills = () => {
-  const [data, setData] = useState({});
-
-  useEffect(() => {
-    instanceAxios
-      .post(`/users`, engData)
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
+  const { postData } = useData();
+  const { skills, skill } = postData;
 
   return (
     <div className="flex mt-8 mb-20">
       <div className="mt-16  ml-[10%] mr-[15%] w-1/8">
-        <h2 className="text-[48px] text-[#4731D3] font-bold">Skills</h2>
+        <h2 className="text-[48px] text-[#4731D3] font-bold">{skill}</h2>
       </div>
 
       <div className="flex flex-wrap w-7/8">
-        {data.skills &&
-          data.skills.map((skill, index) => {
+        {skills &&
+          skills.map((skill, index) => {
             const svg = Object.values(skill)[0];
             const name = skill.name;
 
