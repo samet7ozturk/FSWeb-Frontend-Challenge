@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { instanceAxios } from "../api/api";
 import { engData } from "../data";
-import svg1 from "../images/js-logo 1.svg";
-import svg2 from "../images/Rectangle 35.svg";
-import svg3 from "../images/Group 101.svg";
-import svg4 from "../images/node-logo 1.svg";
-import svg5 from "../images/Group 101 (1).svg";
-import svg6 from "../images/figma-logo 1.svg";
 
-const Movie = () => {
+const Skills = () => {
   const [data, setData] = useState({});
 
   useEffect(() => {
     instanceAxios
-      .get(`/users/2`)
+      .post(`/users`, engData)
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((err) => {
@@ -24,21 +17,33 @@ const Movie = () => {
   }, []);
 
   return (
-    <div className="">
-      <div>
-        <h2>Skills</h2>
+    <div className="flex mt-8 mb-20">
+      <div className="mt-16  ml-[10%] mr-[15%] w-1/8">
+        <h2 className="text-[48px] text-[#4731D3] font-bold">Skills</h2>
       </div>
 
-      <div>
-        <img src={svg1} alt="svg1" />
-        <img src={svg2} alt="svg2" />
-        <img src={svg3} alt="svg3" />
-        <img src={svg4} alt="svg4" />
-        <img src={svg5} alt="svg5" />
-        <img src={svg6} alt="svg6" />
+      <div className="flex flex-wrap w-7/8">
+        {data.skills &&
+          data.skills.map((skill, index) => {
+            const svg = Object.values(skill)[0];
+            const name = skill.name;
+
+            return (
+              <div key={index} className="flex items-center mb-4 min-w-[450px]">
+                <img
+                  src={svg}
+                  alt={`Skill ${index + 1}`}
+                  className="w-40 h-40 mt-16"
+                />
+                <p className="text-[#777777] font-medium text-2xl ml-8">
+                  {name}
+                </p>
+              </div>
+            );
+          })}
       </div>
     </div>
   );
 };
 
-export default Movie;
+export default Skills;
