@@ -1,14 +1,26 @@
 import React from "react";
 import { useData } from "../contexts/DataContext";
+import { useTheme } from "../contexts/ThemeContext";
 
 const Skills = () => {
   const { postData } = useData();
   const { skills, skill } = postData;
+  const { theme } = useTheme();
 
   return (
-    <div className="flex mt-8 mb-20">
+    <div
+      className={`${
+        theme === "dark" ? "bg-[#2B2727]" : "bg-white"
+      } flex pt-8 pb-20`}
+    >
       <div className="mt-16  ml-[10%] mr-[15%] w-1/8">
-        <h2 className="text-[48px] text-[#4731D3] font-bold">{skill}</h2>
+        <h2
+          className={`text-[48px] ${
+            theme === "dark" ? "text-[#CBF281]" : "text-[#4731D3]"
+          } font-bold`}
+        >
+          {skill}
+        </h2>
       </div>
 
       <div className="flex flex-wrap w-7/8">

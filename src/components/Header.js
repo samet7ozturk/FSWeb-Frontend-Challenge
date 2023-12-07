@@ -1,16 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import img1 from "../images/hero-right.png";
 import { useData } from "../contexts/DataContext";
 import { useLanguage } from "../contexts/LanguageContext";
+import { useTheme } from "../contexts/ThemeContext";
 
 const Header = () => {
   const { postData } = useData();
   const { description, name, header, links } = postData;
-  const { language, toggleLanguage } = useLanguage();
+  const { toggleLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="flex flex-wrap ">
-      <div className="bg-[#4731D3] w-2/3 py-20 relative">
+      <div
+        className={`${
+          theme === "dark" ? "bg-[#171043]" : "bg-[#4731D3]"
+        } w-2/3 py-20 relative`}
+      >
         <img src={img1} className="absolute top-[100px] -right-[260px]" />
         <div className="w-1/3">
           <h2 className="text-[30px] text-[#CBF281] font-bold mx-[50%]">
@@ -37,10 +43,14 @@ const Header = () => {
             ))}
         </div>
       </div>
-      <div className="bg-[#CBF281] w-1/3 py-20">
+      <div
+        className={`${
+          theme === "dark" ? "bg-[#1A210B]" : "bg-[#CBF281]"
+        } w-1/3 py-20`}
+      >
         <div
           className="w-14 h-6 rounded-xl bg-black relative ml-4"
-          onClick={toggleLanguage}
+          onClick={toggleTheme}
           style={{ cursor: "pointer" }}
         >
           <div className="w-4 h-4 rounded-2xl bg-yellow-400 absolute top-1 left-1"></div>

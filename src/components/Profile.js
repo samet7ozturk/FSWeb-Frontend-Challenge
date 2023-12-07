@@ -1,13 +1,15 @@
 import React from "react";
 import svg1 from "../images/image 2.svg";
 import { useData } from "../contexts/DataContext";
+import { useTheme } from "../contexts/ThemeContext";
 
 const Profile = () => {
   const { postData } = useData();
   const { informationTitles, basicInformation, aboutMe, profile } = postData;
+  const { theme } = useTheme();
 
   return (
-    <div className="bg-[#4731D3]">
+    <div className={`${theme === "dark" ? "bg-[#171043]" : "bg-[#4731D3]"}`}>
       <div className="ml-[10%] pt-20">
         <h2 className="text-[48px] text-[#CBF281] font-bold">{profile}</h2>
       </div>
