@@ -15,7 +15,7 @@ const Skills = () => {
     >
       <div className="mt-16  ml-[10%] mr-[15%] w-1/8">
         <h2
-          className={`text-[48px] ${
+          className={`xl:text-[48px] md:text-[48px] text-[30px] ${
             theme === "dark" ? "text-[#CBF281]" : "text-[#4731D3]"
           } font-bold`}
         >
@@ -34,9 +34,9 @@ const Skills = () => {
                 <img
                   src={svg}
                   alt={`Skill ${index + 1}`}
-                  className="w-40 h-40 mt-16"
+                  className="xl:w-40 xl:h-40 md:w-40 md:h-40 w-20 h-20 mt-16"
                 />
-                <p className="text-[#777777] font-medium text-2xl ml-8">
+                <p className="text-[#777777] font-medium xl:text-2xl md:text-2xl text-xl xl:ml-8 xl:mt-14 md:ml-8 md:mt-14 mt-14 ml-4">
                   {name}
                 </p>
               </div>

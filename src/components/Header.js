@@ -18,12 +18,11 @@ const Header = () => {
           theme === "dark" ? "bg-[#171043]" : "bg-[#4731D3]"
         } w-2/3 py-20 relative`}
       >
-        <img src={img1} className="absolute top-[100px] -right-[260px]" />
-        <span className="absolute top-[80px] right-[30px]">
+        <span className="sm:absolute top-[80px] right-[30px]">
           {language === "en" ? (
             <>
               <span
-                className="sm:text-[15px] text-[10px] font-bold text-[#CAF181] tracking-wider"
+                className=" xl:text-[15px] font-bold text-[#CAF181] tracking-wider"
                 onClick={toggleLanguage}
                 style={{ cursor: "pointer" }}
               >
@@ -49,14 +48,15 @@ const Header = () => {
           )}
         </span>
         <div className="w-1/3">
-          <h2 className="text-[30px] text-[#CBF281] font-bold mx-[50%]">
+          <h2 className="text-[30px] text-[#CBF281] font-bold xl:mx-[50%] md:mx-[40%] mx-[100%]">
             {name}
           </h2>
         </div>
-        <h1 className="text-[54px] text-[#CBF281] font-bold mx-[16%] mt-24 mb-10">
+        <img src={img1} className="xl:absolute top-[100px] -right-[260px]" />
+        <h1 className="xl:text-[54px] md:text-[54px] text-[35px] text-[#CBF281] font-bold mx-[16%] xl:mt-24 md:mt-24 sm:mt-24 mb-10">
           {header}
         </h1>
-        <h2 className="text-[24px] text-white font-normal mx-[16%] mb-10">
+        <h2 className="text-[24px] text-white font-normal ml-[16%] mr-[25%] mb-10">
           {description}
         </h2>
         <div className="flex space-x-4 mx-[16%]">
@@ -78,7 +78,7 @@ const Header = () => {
           theme === "dark" ? "bg-[#1A210B]" : "bg-[#CBF281]"
         } w-1/3 py-20`}
       >
-        <label className="swap swap-rotate">
+        <label className="swap swap-rotate pl-5">
           {/* this hidden checkbox controls the state */}
           <input type="checkbox" onClick={toggleTheme} />
 

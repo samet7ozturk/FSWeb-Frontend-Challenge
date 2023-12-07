@@ -26,9 +26,10 @@ const Projects = () => {
                 key={index}
                 className={`${
                   theme === "dark" ? "bg-[#2B2727]" : "bg-white"
-                } rounded-2xl flex`}
+                } rounded-2xl flex xl:flex-nowrap md:flex-nowrap flex-wrap`}
               >
                 <img src={projectsImg[index]} alt={`Project ${index + 1}`} />
+
                 <div>
                   <h3
                     className={`text-[32px] ${
@@ -40,7 +41,7 @@ const Projects = () => {
                   <p
                     className={` ${
                       theme === "dark" ? "text-white" : "text-[#383838]"
-                    } ml-12 mt-8`}
+                    } ml-12 mt-8 mb-12 xl:mr-0 md:mr-0 mr-12`}
                   >
                     {projectsText[index]}
                   </p>
