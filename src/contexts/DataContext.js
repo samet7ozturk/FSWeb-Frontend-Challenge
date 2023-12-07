@@ -19,8 +19,8 @@ export const DataProvider = ({ children }) => {
     instanceAxios
       .post("/posts", dataToSend)
       .then((res) => {
-        console.log(res);
-        setPostData(dataToSend);
+        console.log(res.data);
+        setPostData(res.data);
       })
       .catch((err) => {
         setError(err);
