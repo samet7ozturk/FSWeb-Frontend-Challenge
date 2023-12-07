@@ -23,7 +23,7 @@ const Header = () => {
           {language === "en" ? (
             <>
               <span
-                className="text-[15px] font-bold text-[#CAF181] tracking-wider"
+                className="sm:text-[15px] text-[10px] font-bold text-[#CAF181] tracking-wider"
                 onClick={toggleLanguage}
                 style={{ cursor: "pointer" }}
               >
