@@ -7,7 +7,8 @@ import { useTheme } from "../contexts/ThemeContext";
 const Header = () => {
   const { postData } = useData();
   const { description, name, header, links } = postData;
-  const { toggleLanguage } = useLanguage();
+  const { language, toggleLanguage } = useLanguage();
+
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -18,6 +19,35 @@ const Header = () => {
         } w-2/3 py-20 relative`}
       >
         <img src={img1} className="absolute top-[100px] -right-[260px]" />
+        <span className="absolute top-[80px] right-[30px]">
+          {language === "en" ? (
+            <>
+              <span
+                className="text-[15px] font-bold text-[#CAF181] tracking-wider"
+                onClick={toggleLanguage}
+                style={{ cursor: "pointer" }}
+              >
+                TÜRKÇE
+              </span>
+              <span className=" text-[15px] font-bold text-[#D9D9D9] tracking-wider">
+                'YE GEÇ
+              </span>
+            </>
+          ) : (
+            <>
+              <span
+                className="text-[15px] font-bold text-[#CAF181] tracking-wider"
+                onClick={toggleLanguage}
+                style={{ cursor: "pointer" }}
+              >
+                SWITCH TO
+              </span>
+              <span className="text-[15px] font-bold text-[#D9D9D9] tracking-wider">
+                <span> ENGLISH</span>
+              </span>
+            </>
+          )}
+        </span>
         <div className="w-1/3">
           <h2 className="text-[30px] text-[#CBF281] font-bold mx-[50%]">
             {name}
