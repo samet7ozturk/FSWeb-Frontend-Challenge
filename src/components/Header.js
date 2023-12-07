@@ -25,6 +25,7 @@ const Header = () => {
                 className=" xl:text-[15px] font-bold text-[#CAF181] tracking-wider"
                 onClick={toggleLanguage}
                 style={{ cursor: "pointer" }}
+                data-cy="language"
               >
                 TÜRKÇE
               </span>
@@ -38,6 +39,7 @@ const Header = () => {
                 className="text-[15px] font-bold text-[#CAF181] tracking-wider"
                 onClick={toggleLanguage}
                 style={{ cursor: "pointer" }}
+                data-cy="language"
               >
                 SWITCH TO
               </span>
@@ -67,6 +69,7 @@ const Header = () => {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-cy="link"
               >
                 <img src={link.image} alt={`Link ${index + 1}`} />
               </a>
@@ -80,7 +83,7 @@ const Header = () => {
       >
         <label className="swap swap-rotate pl-5">
           {/* this hidden checkbox controls the state */}
-          <input type="checkbox" onClick={toggleTheme} />
+          <input type="checkbox" onClick={toggleTheme} data-cy="theme" />
 
           {/* sun icon */}
           <svg
