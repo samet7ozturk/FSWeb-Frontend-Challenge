@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { instanceAxios } from "../api/api";
-import { engData } from "../data";
+import { engData, trData } from "../data";
+import { useLanguage } from "./LanguageContext";
 
 export const DataContext = createContext();
 
@@ -9,24 +10,25 @@ export const useData = () => {
 };
 
 export const DataProvider = ({ children }) => {
+  const { language } = useLanguage();
   const [postData, setPostData] = useState({});
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const dataToSend = language === "en" ? engData : trData;
     instanceAxios
-      .post("/posts", engData)
+      .post("/posts", dataToSend)
       .then((res) => {
         console.log(res);
-        setPostData(engData);
+        setPostData(dataToSend);
       })
       .catch((err) => {
         setError(err);
       });
-  }, []);
+  }, [language]);
 
   return (
-    <DataContext.Provider value={{ postData, setPostData, loading, error }}>
+    <DataContext.Provider value={{ postData, setPostData, error }}>
       {children}
     </DataContext.Provider>
   );

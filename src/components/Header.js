@@ -1,18 +1,12 @@
 import React, { useEffect } from "react";
-import { engData, trData } from "../data";
 import img1 from "../images/hero-right.png";
 import { useData } from "../contexts/DataContext";
 import { useLanguage } from "../contexts/LanguageContext";
 
 const Header = () => {
-  const { postData, setPostData } = useData();
+  const { postData } = useData();
   const { description, name, header, links } = postData;
   const { language, toggleLanguage } = useLanguage();
-
-  useEffect(() => {
-    const dataToSend = language === "en" ? engData : trData;
-    setPostData(dataToSend);
-  }, [language, setPostData]);
 
   return (
     <div className="flex flex-wrap ">
